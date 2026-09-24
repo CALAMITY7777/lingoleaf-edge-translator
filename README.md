@@ -58,7 +58,7 @@ DeepSeek Key 只保存在 Supabase Edge Function Secrets，不会进入扩展安
 
 ## 使用个人密钥
 
-从 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取自己的 API Key。不要把密钥发到聊天中。
+从 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取自己的 API Key。
 
 支持直接粘贴，或导入最大 16 KB 的文件：
 
