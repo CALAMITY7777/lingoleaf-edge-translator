@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - name: Check extension JavaScript syntax
+        run: |
+          for file in extension/cloud.js extension/settings.js extension/background.js extension/options.js extension/popup.js extension/translate.js; do
+            node --check "$file"
+          done

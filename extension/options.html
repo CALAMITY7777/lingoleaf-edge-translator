@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>轻译 · 连接与偏好</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+<main class="settings-layout enter">
+  <aside>
+    <div class="brand"><img class="logo" src="icons/logo.svg" alt=""><div><div class="brand-name">LingoLeaf</div><div class="brand-sub">轻译 · 用自己的节奏阅读</div></div></div>
+    <div class="aside-copy"><span class="eyebrow">LESS FRICTION. MORE UNDERSTANDING.</span><h1>语言之间，<br>留一点轻盈。</h1><p>一段原文，一段译文。<br>让每一次阅读，都更靠近理解。</p><div class="book-illustration" aria-hidden="true"><div class="page-left"><span></span><span></span><span></span><span></span></div><div class="page-right"><b>译</b><span></span><span></span></div><i>✦</i></div></div>
+    <div class="aside-foot">为 Edge 打造 · 原生轻量扩展<br><span>六种语言 / 双语阅读 / 上下文解释</span></div>
+  </aside>
+  <article>
+    <header class="row between"><div><div class="eyebrow">MAKE IT YOURS</div><h2>连接与偏好</h2></div><span class="pill"><span class="dot"></span>安装即用</span></header>
+    <section>
+      <h3><span class="number">01</span> 选择翻译服务</h3>
+      <p class="description">默认免费服务会自动建立匿名会话，无需注册或填写 API Key。每日额度用完后，也可以切换为自己的 DeepSeek Key。</p>
+      <form id="settings-form">
+        <div class="field">
+          <label for="provider">服务方式</label>
+          <select id="provider">
+            <option value="cloud">LingoLeaf 免费服务 · 推荐</option>
+            <option value="deepseek">我的 DeepSeek API Key</option>
+          </select>
+          <small id="provider-help">每位用户每天最多 2 万字符；公共服务每天设有总量保护。</small>
+        </div>
+        <div id="personal-settings" class="personal-settings">
+          <div class="setup-guide"><div><b>1</b><span>在 <strong>DeepSeek 开放平台</strong>创建 API Key。</span></div><div><b>2</b><span>在下方粘贴，或导入 <strong>.txt / .json</strong> 文件。</span></div><div><b>3</b><span>保存并验证后，翻译请求将直接发送到 DeepSeek。</span></div></div>
+          <div class="field"><label for="api-key">DeepSeek API Key</label><div class="input-row"><input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-…" aria-describedby="key-help"><button type="button" class="secondary" id="reveal" aria-label="显示密钥">显示</button></div><div class="row"><button class="secondary" type="button" id="import">导入密钥文件</button><button class="text-button" type="button" id="remove-key">清除密钥</button><input type="file" id="key-file" accept=".txt,.json,text/plain,application/json" hidden></div><small id="key-help">文件仅在本机读取，不会上传。默认只保留到浏览器关闭。</small><label class="remember"><input type="checkbox" id="remember-key"> 在此浏览器记住密钥</label><small>勾选后存入扩展本地存储，不参与账号同步；本地存储不是加密保险箱。</small></div>
+          <div class="field"><label for="model">模型</label><input id="model" type="text" spellcheck="false" placeholder="deepseek-v4-flash" list="models" maxlength="90"><datalist id="models"><option value="deepseek-v4-flash"></option><option value="deepseek-v4-pro"></option></datalist><small>仅用于个人 Key 模式；免费服务的模型由服务端统一配置。</small></div>
+        </div>
+        <div class="settings-grid"><div class="field"><label for="target">默认翻译语言</label><select id="target"></select></div><div class="field"><label for="explanation-language">智能解释语言</label><select id="explanation-language"></select></div></div>
+        <div class="row form-actions"><button class="primary" type="submit" id="save">保存设置</button><button class="secondary" type="button" id="test">测试一句翻译</button></div>
+        <p id="feedback" class="message" role="status"></p>
+        <p id="usage-note" class="note">免费服务使用匿名会话和每日额度；测试翻译会消耗少量免费额度。</p>
+      </form>
+    </section>
+    <section class="site-section"><h3><span class="number">02</span> 自动翻译的网站</h3><p class="description">在扩展弹窗中为当前网站开启。只有授权的网站才会自动读取并翻译可见文字。</p><div id="sites" class="sites"></div></section>
+    <section class="privacy-section"><h3><span class="number">03</span> 简单，也有边界</h3><div class="privacy-grid"><div><strong>密钥留在服务端</strong><p>免费服务的 DeepSeek Key 只保存在 Supabase Edge Function Secrets 中，不会打包进扩展或公开仓库。</p></div><div><strong>只发送待译内容</strong><p>翻译文本经 Supabase 代理发送到 DeepSeek；缓存只存在扩展内存，不保存网页和输入历史。</p></div></div><div class="row"><button class="secondary" id="clear" type="button">清空翻译缓存</button><a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noreferrer">获取个人 DeepSeek API Key ↗</a></div></section>
+    <footer>轻译 1.4 · 独立开发的扩展，与 DeepSeek、Supabase、OpenAI 或 Microsoft 无隶属关系。</footer>
+  </article>
+</main>
+<script type="module" src="options.js"></script>
+</body>
+</html>

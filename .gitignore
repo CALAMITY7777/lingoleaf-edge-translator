@@ -1,0 +1,9 @@
+node_modules/
+.npm-cache/
+.tools/
+.env
+.env.*
+!.env.example
+supabase/.temp/
+dist/
+*.zip
